@@ -50,7 +50,7 @@ class Stack {
         }
 
         // method to look at the element on top of the stack
-        int peep(){
+        int peek(){
             if (top < 0){
                 cout << "Stack is empty" << endl; 
                 return -1; 
@@ -72,6 +72,36 @@ class Stack {
             cout << "displayed stack elements successfully" << endl; 
         }
 
+        // function to change an element in the ith position
+        void change(int index, int element){
+            if (top == -1){
+                cout << "stack is empty. No element to change" << endl;
+                return;
+            }
+
+            if (index > top){
+                cout << "stack index out of range" << endl;
+            }
+
+            arr[index] = element;
+        }
+
+        // method to get the number of elements in the stack
+        int count(){
+            return top + 1;
+        }
+
+        // method to check if the stack is full
+        bool isFull(){
+            return capacity == top + 1;
+        }
+
+        // method to check if the stack is empty
+        bool isEmpty(){
+            return top == -1;
+        }
+
+    
 
 };
 
@@ -81,10 +111,16 @@ int main(){
     // now let me test my stack class 
 
     Stack stack = Stack(5); 
-    stack.push(77);
-    stack.push(78); 
-    stack.pop();
+    // stack.push(77);
+    // stack.push(78); 
+    stack.change(3, 99);
     stack.displayElements();
+    cout << "number of elements on the stack: " << stack.count() << endl;
+
+    cout << boolalpha;
+    cout << "is the stack empty?: " << stack.isEmpty() << endl;
+    cout << "is the stack full?: " << stack.isFull() << endl;
+
 
     return 0;
 }
